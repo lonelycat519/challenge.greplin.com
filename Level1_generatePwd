@@ -1,0 +1,50 @@
+string = 'FourscoreandsevenyearsagoourfaathersbroughtforthonthiscontainentanewnationconceivedinzLibertyanddedicatedtothepropositionthatallmenarecreatedequalNowweareengagedinagreahtcivilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth'
+
+def decPwd(string):
+  length = len(string)
+  print length
+
+  sub_str = {
+      'str': '',
+      'loc': -1,
+      'left': -1,
+      'right': -1,
+      'len': 1
+  }
+
+  for i in range(1, length-2):
+    left = i-1
+    right = i+1
+    str_now = ''
+    len_now = 0
+
+    while left>=0 and right<=length-1:
+      if string[left] == ' ':
+        left -= 1
+      elif string[right] == ' ':
+        right += 1
+      elif string[left] == string[right]:
+        str_now = string[left:right+1]
+        len_now = right - left + 1
+        left -= 1
+        right += 1
+      else:
+        left += 1
+        right -= 1
+        break
+
+    if len_now > sub_str['len']:
+      sub_str['str'] = string[left:right+1]
+      sub_str['loc'] = i
+      sub_str['left'] -= left
+      sub_str['right'] += right
+      sub_str['len'] = right-left+1
+
+  return sub_str['str']
+
+
+if __name__ == '__main__':
+  pwd = decPwd(string)
+  print pwd
+
+
