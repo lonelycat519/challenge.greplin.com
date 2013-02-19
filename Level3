@@ -1,0 +1,18 @@
+import itertools
+
+def subset_num(num_set):
+  result = 0
+  for i in xrange(2, len(num_set)):
+    for combo in itertools.combinations(num_set, i):
+      if sum(combo) in num_set:
+        result += 1
+  return result
+
+def main():
+  numset = [3, 4, 9, 14, 15, 19, 28, 37, 47, 50, 54, 56, 59, 61, 70, 73, 78, 81, 92, 95, 97, 99]
+  sorted_numset = sorted(numset)
+  result = subset_num(sorted_numset)
+  print result
+
+if __name__ == '__main__':
+  main()
